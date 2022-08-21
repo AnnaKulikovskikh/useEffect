@@ -15,7 +15,7 @@ export default function Detail(props) {
     }, [info])
 
     return (
-        <div>
+        <div className="details">
             <img src={info.aratar} alt="photo"/>
             <h3>{info.name}</h3>
             <p>City: {info.details.city}</p>

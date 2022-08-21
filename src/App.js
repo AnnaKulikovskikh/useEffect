@@ -6,28 +6,34 @@ function App() {
 
   const url = "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json"
 
-  const [list, setList] = useState()
+  const [list, setList] = useState([])
 
-  useEffect(function() {
-    console.log("Effect ran")
+  useEffect(() => {
     fetch(url)
         .then(res => res.json())
-        .then(data => setList(data))
-  }, [])
+        .then(data => setList(data)
+      )
+    }, [])
 
-  const names = list.map(item => {
-    return (
-      <List 
-        key={item.id} 
-        id={item.id} 
-        name={item.name}
-      />
+  const names = "loading..."
+
+  if (list.length !== 0) {
+    const names = list.map(item => {
+      return (
+        <List 
+          key={item.id} 
+          id={item.id} 
+          name={item.name}
+        />
+      )}
     )
-  })
+  }
 
-    
+
   return (
     <main>
+      {/* {JSON.stringify(list, null, 2)} */}
+      {/* {list.lenght === 0 ?  <p>loading...</p> : <List data={list}/>} */}
       {names}
     </main>
   )
