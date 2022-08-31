@@ -1,29 +1,21 @@
-import React from "react"
+import React, {useState} from "react"
 import Details from "./Details"
 
 export default function List(props) {
-    console.log(props)
 
-    // if (!props.data) return null
-
-    // const names = props.data.map(name => {
-    //     return(
-    //         <div key ={name.id}>
-    //             {name.name}
-    //         </div>
-    //     )
-    // })
+    const [show, setShow] = useState(false)
 
     function reveal() {
-        return (
-            <Details info={{id: props.id, name: props.name}}/>
-        )
+        setShow(prev => !prev)
     }
 
     return (
-        <div className="list" onClick={reveal}>
-            {props.name}
-            <hr/>
+        <div>
+            <div className="list" onClick={reveal}>
+                {props.name}
+                <hr/>
+            </div>
+            {show && <Details info={{id: props.id, name: props.name}} />}
         </div>
     )
 }

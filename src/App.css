@@ -6,10 +6,11 @@ main {
   display: flex;
   flex-wrap: nowrap;
   margin: 2%;
+  flex-direction: column;
 }
 
 .list {
-  width: 46%;
+  width: 30%;
 }
 
 .details {
